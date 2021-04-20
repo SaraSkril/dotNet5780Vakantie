@@ -1,0 +1,109 @@
+﻿<Window x:Class="PLWPF.OrederInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+    Title="MainWindow" MinHeight="720" MinWidth="1020" Height="700" Width="1000"  WindowStyle="None" FlowDirection="RightToLeft"
+        AllowsTransparency="False" Background="White"  MouseDown="Window_MouseDown" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="1.88*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="IMAGE/logonw.jpeg" Margin="-40,2,40,-2"/>
+        </Grid>
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="2" Click="Button_Click_MinimizeWindow" Width="25" Height="25" Template="{StaticResource TitleBarButtons}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" >
+                <Button.Content>
+                    <Image Source="IMAGE/minus-empty.png" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="Max" Grid.Column="1" Click="Button_Click_MaximizeWindow" Width="25" Height="25" Template="{StaticResource TitleBarButtons}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="IMAGE/squareIcon.png" Height="15" Width="21" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="Close" Grid.Column="0" Click="Button_Click_CloseWindow" Width="25" Height="25" Template="{DynamicResource TitleBarButtons}" Background="Red" MouseEnter="Button_MouseEnter_RED" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="IMAGE/xIcon.png" Width="23" Height="12" RenderTransformOrigin="0,0"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+        <StackPanel Grid.Row="1" >
+            <TextBlock Text="Search or Group Orders" HorizontalAlignment="Center" FontSize="18" Margin="0 0" FontFamily="Comic Sans MS" />
+            <TextBlock Text="Search by Order key" HorizontalAlignment="Right" FontSize="14" Margin="0,0,23,0" FontFamily="Comic Sans MS" Height="50" />
+            <Grid FlowDirection="LeftToRight" Height="143" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.15*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <Label x:Name="label" FontSize="16" Grid.Column="1" Content="Enter Key:" VerticalContentAlignment="Center" FontFamily="Comic Sans MS" />
+                <TextBox x:Name="FirstName" Padding="4" Grid.Column="2" Text="" MaxLength="8" Margin="1" VerticalContentAlignment="Center" FontFamily="Comic Sans MS" />
+
+                <Button Grid.Row="0" Grid.Column="3"  Click="Button_Click" Background="White" Width="40" Template="{DynamicResource icon}"  Margin="10,0,110,0" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" FontFamily="Comic Sans MS" >
+                    <Image Source="IMAGE/magnify.png" RenderTransformOrigin="-0.607,0.429"/>
+                </Button>
+                <Label Content="Group By:" Grid.Row="2" Grid.Column="1" FontSize="16" FontFamily="Comic Sans MS" />
+                <ComboBox x:Name="Opt" Grid.Row="2" Grid.Column="2" Loaded="Opt_Loaded" SelectionChanged="Opt_SelectionChanged" FontFamily="Comic Sans MS" />
+                <ComboBox x:Name="byStatus" Grid.Row="2" Grid.Column="3" Width="100" Visibility="Collapsed" Loaded="byUnit_Loaded"  SelectionChanged="byUnit_SelectionChanged"  FontFamily="Comic Sans MS" />
+                
+            </Grid>
+        </StackPanel>
+
+        <ListView Grid.Row="3" x:Name="HostList" FlowDirection="LeftToRight" Visibility="Visible" Margin="82,0,82,0" FontFamily="Comic Sans MS"  >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Order Key" DisplayMemberBinding="{Binding OrderKey}" Width="140"/>
+                    <GridViewColumn Header="Hosting Unit Key" DisplayMemberBinding="{Binding HostingUnitKey}" Width="140"/>
+                    <GridViewColumn Header="Guest Request Key" DisplayMemberBinding="{Binding GuestRequestKey}" Width="140"/>
+
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="140"/>
+                    <GridViewColumn Header="Create Date" DisplayMemberBinding="{Binding CreateDate}" Width="140"/>
+                    <GridViewColumn Header="Order Date" DisplayMemberBinding="{Binding OrderDate}" Width="140"/>
+                    
+
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu >
+                <ContextMenu>
+
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+
+
+    </Grid>
+
+</Window>
+

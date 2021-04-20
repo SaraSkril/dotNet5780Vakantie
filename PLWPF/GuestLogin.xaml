@@ -1,0 +1,25 @@
+﻿<Window x:Class="PLWPF.GuestLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+      Height="350" Width="350">
+    <Grid>
+        <TextBlock Height="18" HorizontalAlignment="Left" Margin="10,10,0,0" Name="LoginHeading" Text="Guest Login:" VerticalAlignment="Top" FontSize="14" FontStretch="ExtraCondensed"/>
+        <TextBlock Height="50" HorizontalAlignment="Left" Margin="0,50,-93,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Normal" Padding="5" FontFamily="Ariel">  
+             Please login if you are an existing guest. <LineBreak /><!--line break-->  If you are new to our site then 
+            please click on Register button
+
+        </TextBlock>
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="42,116,0,0" Name="textBlock1" Text="ID:" VerticalAlignment="Top" Width="67" />
+        <PasswordBox Height="23" HorizontalAlignment="Left" Margin="71,115,0,0" Name="Idtextbox" VerticalAlignment="Top" Width="184" />
+
+        <Button Content="Login" Height="23" HorizontalAlignment="Left" FontSize="12" Margin="75,159,0,0" Name="button1" VerticalAlignment="Top" Width="82" Click="button1_Click_Login_Guest"   VerticalContentAlignment="Center" Style="{StaticResource general1}" />
+        <Button Content="Register" Height="23" HorizontalAlignment="Left" FontSize="12" Margin="173,159,0,0" Name="button2" VerticalAlignment="Top" Width="82" Click="button2_Click_addnewGuest" Style="{StaticResource general1}"/>
+        
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,54 @@
+﻿<Window x:Class="PLWPF.HostLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Height="350" Width="350" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" FlowDirection="RightToLeft">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="2" Click="Button_Click_MinimizeWindow" Width="18" Height="18" Template="{StaticResource TitleBarButtons}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" >
+                <Button.Content>
+                    <Image Source="IMAGE/minus-empty.png" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="Max" Grid.Column="1" Click="Button_Click_MaximizeWindow" Width="18" Height="18" Template="{StaticResource TitleBarButtons}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="IMAGE/squareIcon.png" Height="13" Width="18" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="Close" Grid.Column="0" Click="Button_Click_CloseWindow" Width="18" Height="18" Template="{DynamicResource TitleBarButtons}" Background="Red" MouseEnter="Button_MouseEnter_RED" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="IMAGE/xIcon.png" Width="18" Height="12" RenderTransformOrigin="0,0"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock Height="29" HorizontalAlignment="Left" Margin="13,28,0,0" Name="LoginHeading" Text="Host Login:" VerticalAlignment="Top" FontSize="14" FontStretch="ExtraCondensed" FontFamily="Comic Sans MS" Width="119"/>
+            <TextBlock Height="74" HorizontalAlignment="Left" Margin="68,62,0,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Normal" Padding="5" FontFamily="Comic Sans MS">  
+             Please login if you are an existing Host. <LineBreak /><!--line break-->  If you are new to our site <LineBreak></LineBreak>then 
+            please click on Register button
+
+            </TextBlock>
+            <TextBlock Height="37" HorizontalAlignment="Left" Margin="50,141,0,0" Name="textBlock1" Text="ID:" VerticalAlignment="Top" Width="67" FontFamily="Comic Sans MS" />
+            <PasswordBox Height="23" HorizontalAlignment="Left" Margin="79,141,0,0" Name="Idtextbox" VerticalAlignment="Top" Width="184" MaxLength="9" />
+            <Button Content="Login" Height="26" HorizontalAlignment="Left" Margin="79,183,0,0" Name="button1" FontSize="12" VerticalAlignment="Top" Width="86" Click="button1_Click_Login_Host" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Style="{StaticResource general1}"/>
+            <Button Content="Register" Height="26" HorizontalAlignment="Left" Margin="181,183,0,0" FontSize="12" Name="button2" VerticalAlignment="Top" Width="82" Click="button2_Click_addnewHost" Style="{StaticResource general1}"/>
+            <Image Source="IMAGE\logonw.jpeg" Margin="96,232,100,-13"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

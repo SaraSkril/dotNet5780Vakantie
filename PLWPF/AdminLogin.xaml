@@ -1,0 +1,55 @@
+﻿<Window x:Class="PLWPF.AdminLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="AdminLogin" Height="260" Width="400" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" FlowDirection="RightToLeft">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="2" Click="Button_Click_MinimizeWindow" Width="18" Height="18" Template="{StaticResource TitleBarButtons}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" >
+                <Button.Content>
+                    <Image Source="IMAGE/minus-empty.png" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="Max" Grid.Column="1" Click="Button_Click_MaximizeWindow" Width="18" Height="18" Template="{StaticResource TitleBarButtons}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="IMAGE/squareIcon.png" Height="13" Width="18" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="Close" Grid.Column="0" Click="Button_Click_CloseWindow" Width="18" Height="18" Template="{DynamicResource TitleBarButtons}" Background="Red" MouseEnter="Button_MouseEnter_RED" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="IMAGE/xIcon.png" Width="18" Height="12" RenderTransformOrigin="0,0"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="64*"/>
+                <ColumnDefinition Width="194*"/>
+                <ColumnDefinition Width="63*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="User" Grid.Column="1"  Margin="1,28,1,85"/>
+            <Label Content="Password" Grid.Column="1" Margin="1,64,1,49" />
+            <TextBox Name="name" Grid.Column="2" Margin="3,32,4,81"/>
+            <PasswordBox Name="pass" Grid.Column="2" Margin="3,66,4,47"/>
+            <Button Name="cancel"  Click="cancel_Click"  Grid.Column="2" Margin="115,103,4,10" Content="Cancel"  FontSize="12" Style="{StaticResource general1}" />
+            <Button Name="login" Click="login_Click"  Grid.Column="2" Margin="1,103,112,10" Content="Login" FontSize="12" Style="{StaticResource general1}"/>
+        </Grid>
+
+        <Image Source="IMAGE/logonw.jpeg" Grid.Row="2"/>
+    </Grid>
+</Window>

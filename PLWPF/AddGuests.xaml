@@ -1,0 +1,173 @@
+﻿<Window x:Class="PLWPF.AddGuests"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="720" MinWidth="1020" Height="700" Width="1000"  WindowStyle="None" FlowDirection="RightToLeft"
+        AllowsTransparency="False" Background="White"     MouseDown="Window_MouseDown" >
+    <Grid FlowDirection="LeftToRight">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.3*"/>
+
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Click="Button_Click_MinimizeWindow" Width="25" Height="25" Template="{StaticResource TitleBarButtons}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" >
+                <Button.Content>
+                    <Image Source="IMAGE/minus-empty.png" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="Max" Grid.Column="2" Click="Button_Click_MaximizeWindow" Width="25" Height="25" Template="{StaticResource TitleBarButtons}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="IMAGE/squareIcon.png" Height="13" Width="19" />
+                </Button.Content>
+            </Button>
+            <Button x:Name="Close" Grid.Column="3" Click="Button_Click_CloseWindow" Width="25" Height="25" Template="{DynamicResource TitleBarButtons}" Background="Red" MouseEnter="Button_MouseEnter_RED" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="IMAGE/xIcon.png" Width="23" Height="12" RenderTransformOrigin="0,0"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+        <Grid FlowDirection="LeftToRight" Margin="0,0.667,-0.667,94.333" Grid.RowSpan="2" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="13" Content="First Name:"/>
+                <Label Grid.Row="3" Grid.Column="0" FontSize="13" Content="Last Name:"/>
+                <Label Grid.Row="5" Grid.Column="0" FontSize="13" Content="Email:"/>
+                <Label Grid.Row="7" Grid.Column="0" FontSize="13" Content="Entry Date:"/>
+                <Label Grid.Row="9" Grid.Column="0" FontSize="13" Content="Release Date:"/>
+                <Label Grid.Row="11" Grid.Column="0" FontSize="13" Content="Number Of Adults (18+):"/>
+                <Label Grid.Row="13" Grid.Column="0" FontSize="13" Content="Number Of Children:"/>
+
+                <TextBox Padding="2" Name="First_Name" Grid.Row="1" Grid.Column="1" Margin="1" VerticalContentAlignment="Center" Text="{Binding Path=FirstName, Mode=TwoWay}" TextChanged="First_Name_TextChanged"/>
+                <TextBox Padding="2" Name="Last_Name" Grid.Row="3" Grid.Column="1"  Margin="1" VerticalContentAlignment="Center" Text="{Binding Path=LastName, Mode=TwoWay}" TextChanged="Last_Name_TextChanged"/>
+                <TextBox Padding="2" Name="Email" Grid.Row="5" Grid.Column="1" Margin="1" VerticalContentAlignment="Center" Text="{Binding Path=EmailAddress, Mode=TwoWay}" TextChanged="Email_TextChanged"/>
+                <DatePicker Padding="2" Name="DatePicker_Entry" Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding Path=EntryDate, Mode=TwoWay}" DisplayDate="{Binding Path=EntryDate}"/>
+                <DatePicker Padding="2" Name="DatePicker_Release" Grid.Row="9" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding Path=ReleaseDate, Mode=TwoWay}" DisplayDate="{Binding Path=ReleaseDate}"/>
+                <!-- <TextBox Padding="2" Name="Adult" Grid.Row="11" Grid.Column="1" Margin="1" VerticalContentAlignment="Center" Text="{Binding Path=Adults, Mode=TwoWay}"/>-->
+                <ComboBox Name="Adult"  Grid.Row="11" Grid.Column="1" Text="1" FontSize="16"  HorizontalAlignment="Center"   IsDropDownOpen="False" IsEditable="True" DropDownClosed="numadult_DropDownClosed" SelectionChanged="Adult_SelectionChanged" Margin="1,0,0,0" Width="219" >
+                    <ComboBoxItem>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="plus" Content="+" Grid.Column="0" HorizontalAlignment="Right" Width="20" Height="20" Click="addadult_Click" BorderBrush="White" Background="White" Margin="0,0,0,3.333"/>
+                            <Button x:Name="minus" Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="48,0,-38.667,3.333" Width="20" Height="20" Click="lessadult_Click" BorderBrush="White" Background="White" IsEnabled="False"/>
+                            <TextBox x:Name="adultTB" Text="1" TextAlignment="Center" IsReadOnly="True" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="11,0,-15,0" Width="28" BorderBrush="White" />
+                        </Grid>
+                    </ComboBoxItem>
+                </ComboBox>
+                <!--<TextBox Padding="2" Name="Children" Grid.Row="13" Grid.Column="1" Margin="1" VerticalContentAlignment="Center" Text="{Binding Path=Children, Mode=TwoWay}"/>-->
+                <ComboBox Name="Children"   Width="219" FontSize="16"  Grid.Row="13" Grid.Column="1" Text="0" HorizontalAlignment="Center"  IsDropDownOpen="False"  IsEditable="True" DropDownClosed="numkid_DropDownClosed" SelectionChanged="Children_SelectionChanged" Margin="1,0,0,0" >
+                    <ComboBoxItem>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="addkid" Content="+" Grid.Column="0"    HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="20" Height="20" Click="addkid_Click" Margin="0,-2,0,7.333" BorderBrush="White" Background="White"/>
+                            <Button x:Name="lesskid" Content="-" Grid.Column="2" IsEnabled="False" HorizontalAlignment="Left" Margin="48,1,-38.667,4.333" Width="20" Height="20" Click="lesskid_Click"  BorderBrush="White" Background="White"/>
+                            <TextBox x:Name="kidTB" Text="0" TextAlignment="Center" IsReadOnly="True" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="11,1,-15,4.333" Width="28" BorderBrush="White"/>
+                        </Grid>
+                    </ComboBoxItem>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.3*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="13" Content="Resort:"/>
+                <Label Grid.Row="3" Grid.Column="0" FontSize="13" Content="Area:"/>
+                <Label Grid.Row="5" Grid.Column="0" FontSize="13" Content="Pool:"/>
+                <Label Grid.Row="7" Grid.Column="0" FontSize="13" Content="Jaccuzi:"/>
+                <Label Grid.Row="9" Grid.Column="0" FontSize="13" Content="Garden:"/>
+                <Label Grid.Row="11" Grid.Column="0" FontSize="13" Content="Children Attractions:"/>
+                <Label Grid.Row="13" Grid.Column="0" FontSize="13" Content="Wifi:"/>
+                <ComboBox Padding="2" Name="Resort" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" SelectedItem="{Binding Path=TypeUnit, Mode=TwoWay}" IsEditable="True" Text="Choose Resort"/>
+                <ComboBox Padding="2" Name="Area" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" SelectedItem="{Binding Path=Area, Mode=TwoWay}" IsEditable="True" Text="Choose Area"/>
+                <ComboBox Padding="2" Name="Pool" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" SelectedItem="{Binding Path=Pool, Mode=TwoWay}" IsEditable="True" Text="Are you interested ?"/>
+                <ComboBox Padding="2" Name="Jaccuzi" Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Center" SelectedItem="{Binding Path=Jacuzzi, Mode=TwoWay}" IsEditable="True" Text="Are you interested ?"/>
+                <ComboBox Padding="2" Name="Garden" Grid.Row="9" Grid.Column="1" VerticalContentAlignment="Center" SelectedItem="{Binding Path=Garden, Mode=TwoWay}" IsEditable="True" Text="Are you interested ?"/>
+                <ComboBox Padding="2" Name="Children_att" Grid.Row="11" Grid.Column="1" VerticalContentAlignment="Center" SelectedItem="{Binding Path=ChildrensAttractions, Mode=TwoWay}" IsEditable="True" Text="Are you interested ?"/>
+                <ComboBox Padding="2" Name="Wifi" Grid.Row="13" Grid.Column="1" VerticalContentAlignment="Center" SelectedItem="{Binding Path=Wifi, Mode=TwoWay}" IsEditable="True" Text="Are you interested ? "/>
+                <Button Padding="2" Name="Add" FontSize="15" Content="Add" Grid.Column="1" Grid.Row="15" Click="Add_Guest" Style="{StaticResource general1}" Margin="10,0,91,0" />
+                <Button Padding="2" Name="Cancel" FontSize="15" Content="Cancel" Grid.Column="0" Grid.Row="15" Click="Cancel_Click" Style="{StaticResource general1}" Margin="44,1,10,15" Grid.RowSpan="2"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3" FlowDirection="LeftToRight">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*">
+
+                </ColumnDefinition>
+                <ColumnDefinition Width="*">
+
+                </ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Image Source="IMAGE/logonw.jpeg" Grid.Column="1">
+
+            </Image>
+        </Grid>
+    </Grid>
+</Window>
