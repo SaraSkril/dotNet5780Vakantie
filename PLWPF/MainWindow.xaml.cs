@@ -32,35 +32,10 @@ namespace PLWPF
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
             SystemCommands.MaximizeWindow(this);
-            callThreadToUpdateOrders();
             
         }
 
-        public void callThreadToUpdateOrders()
-        {
-            new Thread(() =>
-            {
-                while (true)
-                {
-                    if (MainWindow.ibl.GetLastUpdated() < DateTime.Today)//only updates them if it didn't update today already
-                    {
-
-                        foreach (Order order in MainWindow.ibl.GetAllOrders())
-                        {
-                            if (order.OrderDate != default(DateTime) && MainWindow.ibl.DaysBetween(order.OrderDate) > 31 && order.Status == Status.Mail_Sent)
-                            {
-                                order.Status = Status.Closed_NoReply;
-                                MainWindow.ibl.UpdateOrder(order, "", "");
-
-                            }
-
-                        }
-                        MainWindow.ibl.UpdateLastUpdated();//updates the date 
-                    }
-                    Thread.Sleep(86400000);//sleeps for 24 hours
-                }
-            }).Start();
-        }
+   
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
